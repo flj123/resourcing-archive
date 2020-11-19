@@ -13,7 +13,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(int(10)*75, int(10)*75);
+  createCanvas(windowWidth, windowHeight);
   currentImg = imgs[index];
   pg = createGraphics(currentImg.width, currentImg.height);
   
