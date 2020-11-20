@@ -6,10 +6,24 @@ let c1;
 let c2;
 
 function preload() {
-  for (let i = 0; i < 6; i++) {
-    imgs[i] = loadImage('assets/image'+i+'.jpg');
-    //print('assets/image'+i+'.jpg');
+  // for (let i = 0; i < 6; i++) {
+  //   imgs[i] = loadImage('assets/image'+i+'.jpg');
+  //   //print('assets/image'+i+'.jpg');
+  // }
+  let urls = [
+    'https://ia801008.us.archive.org/6/items/1984.09lwoodsfreespaceproject12/1984.09_LWoods_FreespaceProject_10.jpg',
+    'https://ia801008.us.archive.org/6/items/1984.09lwoodsfreespaceproject12/1984.09_LWoods_FreespaceProject_3.jpg'
+  ];
+  
+  imgs = [];
+  for (url of urls){
+    imgs.push(loadImage(url));
   }
+  //imgs[0] = loadImage(url);
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
 
 function setup() {
@@ -26,6 +40,8 @@ function draw() {
   
   // Dynamic Variables
   let sc = map(sin(frameCount), -1, 1, 2,0.5)
+  sc = map(sin(radians(frameCount)), -1, 1, 1,0.5)
+  
   let interA = lerpColor(c1, c2, sc);
   let interB = lerpColor(c2, c1, sc);
   colorMode(HSB);
@@ -42,15 +58,15 @@ function draw() {
   
   // Display Image
   push();
-  translate(width/2, height/2);
+  translate(windowWidth/2, windowHeight/2);
   imageMode(CENTER);
   scale(sc);
   image(pg, 0, 0);
-  image(pg, 0, height/2+100, 150,150);
+  image(pg, 0, windowHeight/2+100, 150,150);
   pop();
   
   // Refresh Image
-  if (frameCount % 180 == 0){
+  if (frameCount % 10 == 0){ // 180
     index++;
     currentImg = imgs[index%imgs.length];
     pg = createGraphics(currentImg.width, currentImg.height);
