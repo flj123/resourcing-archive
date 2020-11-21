@@ -35,7 +35,7 @@ function preload() {
       //find the corresponding species
       let domain = '';
       let folder = 'https://resourcingsf.s3.amazonaws.com/imagesMidSize/'
-      //folder = '_static/imagesMidSize/';
+      folder = '_static/imagesMidSize/';
 
       let title = row.getString('ProjectTitle')
       let authors = row.getString('ProjectAuthors');
