@@ -25,7 +25,7 @@ function preload() {
   // load table
   loadTable('assets/data.csv', 'csv', 'header', table =>{
     let totalRows = table.getRowCount();
-    totalRows = 2;
+    totalRows = 100;
     console.debug("Loading images...");
     for (let i = 0; i < totalRows; i++){
       //let i = floor(random(table.getRowCount()));
@@ -35,7 +35,7 @@ function preload() {
       //find the corresponding species
       let domain = '';
       let folder = 'https://resourcingsf.s3.amazonaws.com/imagesMidSize/'
-      //folder = '_static/imagesMidSize/';
+      folder = '_static/imagesMidSize/';
 
       let title = row.getString('ProjectTitle')
       let authors = row.getString('ProjectAuthors');
@@ -66,10 +66,10 @@ function setup() {
   pg = createGraphics(currentImg.width, currentImg.height);
   
   c1 = color(235, 42, 28);
-  c1 = color(0,255,0);
+  //c1 = color(0,255,0);
   
   c2 = color(9, 217, 172);
-  c2 = color(255,0,0);
+  //c2 = color(255,0,0);
 
 }
 
@@ -78,7 +78,7 @@ function draw() {
   
   // Dynamic Variables
   let sc = map(sin(frameCount), -1, 1, 2,0.5)
-  sc = map(sin(radians(frameCount)), -1, 1, 1,0.5)
+  //sc = map(sin(radians(frameCount)), -1, 1, 1,0.5)
   
   let interA = lerpColor(c1, c2, sc);
   let interB = lerpColor(c2, c1, sc);
