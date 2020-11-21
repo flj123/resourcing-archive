@@ -25,7 +25,7 @@ function preload() {
   // load table
   loadTable('assets/data.csv', 'csv', 'header', table =>{
     let totalRows = table.getRowCount();
-    totalRows = 100;
+    totalRows = 10;
     console.debug("Loading images...");
     for (let i = 0; i < totalRows; i++){
       //let i = floor(random(table.getRowCount()));
