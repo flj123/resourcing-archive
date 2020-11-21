@@ -24,30 +24,37 @@ function preload() {
 
   // load table
   loadTable('assets/data.csv', 'csv', 'header', table =>{
-  
-  let i = floor(random(table.getRowCount()));
-  console.log(i);
-  row = table.getRow(i);
+    let totalRows = table.getRowCount();
+    //totalRows = 10;
+    console.debug("Loading images...");
+    for (let i = 0; i < totalRows; i++){
+      //let i = floor(random(table.getRowCount()));
+      //console.log(i);
+      row = table.getRow(i);
 
-  //find the corresponding species
-  let domain = '';
-  let folder = 'https://resourcingsf.s3.amazonaws.com/imagesMidSize/'
+      //find the corresponding species
+      let domain = '';
+      let folder = 'https://resourcingsf.s3.amazonaws.com/imagesMidSize/'
+      folder = '_static/imagesMidSize/';
 
-  let title = row.getString('ProjectTitle')
-  let authors = row.getString('ProjectAuthors');
-  let date = row.getString('PublicationDate');
-  let filename = row.getString('ImageFilename');
-  //filename = '2003.11_Superstudio_Piero%20Frassinelli_7.jpg';
+      let title = row.getString('ProjectTitle')
+      let authors = row.getString('ProjectAuthors');
+      let date = row.getString('PublicationDate');
+      let filename = row.getString('ImageFilename');
+      //filename = 'H01_1982_PerformanceAtoZ_H (1).jpg';
 
-  console.log('Title: ', title);
-  console.log('Authors: ', authors);
-  console.log('Publication Date: ', date);
+      // console.log('Title: ', title);
+      // console.log('Authors: ', authors);
+      // console.log('Publication Date: ', date);
 
-  console.log('Loading image...');
+      // console.log('Loading image...');
 
-  loadImage(folder + filename, img => {
-    imgs.push(img);
-  });
+      loadImage(folder + filename, img => {
+        imgs.push(img);
+      });
+      console.debug("Image " + i + " of " + totalRows);
+    }
+    console.debug("All images loaded!");  
   });
 
 }
