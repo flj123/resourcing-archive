@@ -8,20 +8,6 @@ let fs = false;
 let table;
 
 function preload() {
-  let urls = [
-    //'assets/image0.jpg',
-    //'assets/image1.jpg',
-    //'assets/image2.jpg',
-    //'assets/image3.jpg',
-    //'assets/image4.jpg',
-    //'assets/image5.jpg'
-  ];
-  
-  // imgs = [];
-  // for (url of urls){
-  //   imgs.push(loadImage(url));
-  // }
-
   // load table
   loadTable('assets/data.csv', 'csv', 'header', table =>{
     let totalRows = table.getRowCount();
@@ -78,7 +64,7 @@ function draw() {
   
   // Dynamic Variables
   let sc = map(sin(frameCount), -1, 1, 2,0.5)
-  //sc = map(sin(radians(frameCount)), -1, 1, 1,0.5)
+  sc = map(sin(radians(frameCount)), -1, 1, 1,0.5)
   
   let interA = lerpColor(c1, c2, sc);
   let interB = lerpColor(c2, c1, sc);
